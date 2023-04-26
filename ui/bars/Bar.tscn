@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ui/interface/theme/font/default_font.tres" type="Theme" id=1]
+[ext_resource path="res://ui/bars/health bar bg.png" type="Texture" id=2]
+[ext_resource path="res://ui/bars/health bar.png" type="Texture" id=3]
+[ext_resource path="res://ui/bars/hp.png" type="Texture" id=4]
+[ext_resource path="res://ui/counter/layou-bg.png" type="Texture" id=5]
+
+[node name="Bar" type="HBoxContainer"]
+margin_left = -1.0
+margin_right = 413.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="Counter" type="NinePatchRect" parent="."]
+margin_right = 160.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 160, 0 )
+theme = ExtResource( 1 )
+texture = ExtResource( 5 )
+
+[node name="TextureRect" type="TextureRect" parent="Counter"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 16.0
+margin_top = -12.5
+margin_right = 50.0
+margin_bottom = 16.5
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Counter"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 58.0
+margin_top = -25.5
+margin_right = 153.0
+margin_bottom = 27.5
+text = "8/20"
+align = 2
+valign = 1
+clip_text = true
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_left = 164.0
+margin_right = 414.0
+margin_bottom = 36.0
+value = 40.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 3 )
+nine_patch_stretch = true
+stretch_margin_left = 250

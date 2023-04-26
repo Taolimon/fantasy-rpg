@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/bars/special/sp bar.png" type="Texture" id=1]
+[ext_resource path="res://ui/bars/special/sp bar bg.png" type="Texture" id=2]
+[ext_resource path="res://ui/bars/SP.png" type="Texture" id=3]
+[ext_resource path="res://ui/bars/Bar.tscn" type="PackedScene" id=4]
+
+[node name="SpecialBar" instance=ExtResource( 4 )]
+
+[node name="TextureRect" parent="Counter" index="0"]
+texture = ExtResource( 3 )
+
+[node name="Label" parent="Counter" index="1"]
+text = "0/10"
+
+[node name="TextureProgress" parent="." index="1"]
+value = 5.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 1 )

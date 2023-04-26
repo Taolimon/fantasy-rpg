@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://enemies/enemy-battle.gd" type="Script" id=1]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entitystats/HealthController.gd" type="Script" id=3]
+[ext_resource path="res://ui/bars/health/HealthBar3D.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 2, 1, 2 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.854902, 0.247059, 0.247059, 1 )
+
+[sub_resource type="CylinderShape" id=3]
+height = 0.9
+radius = 2.0
+
+[node name="Enemy" type="KinematicBody" groups=["battle_enemy"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+collision_layer = 3
+collision_mask = 3
+script = ExtResource( 1 )
+player_scene = ExtResource( 2 )
+
+[node name="Base" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Base"]
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 3 )
+
+[node name="HealthController" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="HealthBar3D" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+
+[connection signal="updateUI" from="HealthController" to="HealthBar3D" method="_on_HealthController_updateUI"]
