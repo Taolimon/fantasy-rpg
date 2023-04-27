@@ -22,12 +22,12 @@ func _ready():
 	var enemy_spawn_location = get_node("SpawnPath/SpawnLocation")
 	enemy_spawn_location.unit_offset = randf()
 	
-	var player_position = $Player.transform.origin
+	var player = $Player
 	add_child(enemy)
 	_enemies.append(enemy)
 	if (_number_of_enemies != 1):
 		_number_of_enemies += 1
-	enemy.detectPlayer(player_position)
+	enemy.detectPlayer(player)
 	enemy.connect("defeated", self, "_on_Enemy_defeated")
 	
 	

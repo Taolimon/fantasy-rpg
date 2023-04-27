@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://enemies/enemy-battle.gd" type="Script" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://entitystats/HealthController.gd" type="Script" id=3]
 [ext_resource path="res://ui/bars/health/HealthBar3D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://enemies/EnemyBehaviour.gd" type="Script" id=5]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 2, 1, 2 )
@@ -37,4 +38,8 @@ script = ExtResource( 3 )
 [node name="HealthBar3D" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 
+[node name="EnemyBehaviour" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[connection signal="half_health" from="HealthController" to="." method="_on_HealthController_half_health"]
 [connection signal="updateUI" from="HealthController" to="HealthBar3D" method="_on_HealthController_updateUI"]

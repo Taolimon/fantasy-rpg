@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/ThirdPersonCamera.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://player/characters/v2/Material_004.material" type="Material" id=5]
 [ext_resource path="res://player/characters/v2/Material_002.material" type="Material" id=6]
 [ext_resource path="res://player/Combo.gd" type="Script" id=7]
+[ext_resource path="res://ui/interface/Interface.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CapsuleMesh" id=1]
 radius = 0.5
@@ -151,7 +152,7 @@ nodes/run-time/node = SubResource( 54 )
 nodes/run-time/position = Vector2( 420, 220 )
 nodes/world-movement/node = SubResource( 43 )
 nodes/world-movement/position = Vector2( 580, 80 )
-node_connections = [ "is-attacking", 0, "battle-run", "is-attacking", 1, "StateMachine", "world-movement", 0, "BlendSpace1D", "world-movement", 1, "run-time", "run-time", 0, "run", "mode", 0, "world-movement", "mode", 1, "is-attacking", "output", 0, "mode" ]
+node_connections = [ "run-time", 0, "run", "world-movement", 0, "BlendSpace1D", "world-movement", 1, "run-time", "is-attacking", 0, "battle-run", "is-attacking", 1, "StateMachine", "mode", 0, "world-movement", "mode", 1, "is-attacking", "output", 0, "mode" ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=55]
 
@@ -13725,6 +13726,8 @@ anims/walk_loop = SubResource( 42 )
 
 [node name="LightAtkCombo" type="Node" parent="."]
 script = ExtResource( 7 )
+
+[node name="Interface" parent="." instance=ExtResource( 8 )]
 
 [connection signal="battleStart" from="." to="." method="_on_Player_battleStart"]
 [connection signal="body_entered" from="LightAtkArea" to="." method="_on_LightAtkArea_body_entered"]
