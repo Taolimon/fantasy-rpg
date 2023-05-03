@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/ThirdPersonCamera.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://player/characters/v2/Material_002.material" type="Material" id=6]
 [ext_resource path="res://player/Combo.gd" type="Script" id=7]
 [ext_resource path="res://ui/interface/Interface.tscn" type="PackedScene" id=8]
+[ext_resource path="res://entitystats/HealthController.gd" type="Script" id=9]
 
 [sub_resource type="CapsuleMesh" id=1]
 radius = 0.5
@@ -152,7 +153,7 @@ nodes/run-time/node = SubResource( 54 )
 nodes/run-time/position = Vector2( 420, 220 )
 nodes/world-movement/node = SubResource( 43 )
 nodes/world-movement/position = Vector2( 580, 80 )
-node_connections = [ "run-time", 0, "run", "world-movement", 0, "BlendSpace1D", "world-movement", 1, "run-time", "is-attacking", 0, "battle-run", "is-attacking", 1, "StateMachine", "mode", 0, "world-movement", "mode", 1, "is-attacking", "output", 0, "mode" ]
+node_connections = [ "mode", 0, "world-movement", "mode", 1, "is-attacking", "output", 0, "mode", "is-attacking", 0, "battle-run", "is-attacking", 1, "StateMachine", "world-movement", 0, "BlendSpace1D", "world-movement", 1, "run-time", "run-time", 0, "run" ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=55]
 
@@ -12789,12 +12790,15 @@ mesh = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -5.96046e-08, 0 )
 shape = SubResource( 2 )
 
-[node name="LightAtkArea" type="Area" parent="."]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -2 )
+[node name="AtkPivot" type="Spatial" parent="."]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0 )
+
+[node name="LightAtkArea" type="Area" parent="AtkPivot"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 2 )
 collision_layer = 2
 collision_mask = 2
 
-[node name="LightHitbox" type="CollisionShape" parent="LightAtkArea"]
+[node name="LightHitbox" type="CollisionShape" parent="AtkPivot/LightAtkArea"]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.19209e-07, 0, 0 )
 shape = SubResource( 3 )
 disabled = true
@@ -13729,6 +13733,10 @@ script = ExtResource( 7 )
 
 [node name="Interface" parent="." instance=ExtResource( 8 )]
 
+[node name="HealthController" type="Node" parent="."]
+script = ExtResource( 9 )
+
 [connection signal="battleStart" from="." to="." method="_on_Player_battleStart"]
-[connection signal="body_entered" from="LightAtkArea" to="." method="_on_LightAtkArea_body_entered"]
+[connection signal="body_entered" from="AtkPivot/LightAtkArea" to="." method="_on_LightAtkArea_body_entered"]
 [connection signal="body_entered" from="BattleInitiator" to="." method="_on_BattleInitiator_body_entered"]
+[connection signal="updateUI" from="HealthController" to="Interface" method="_on_HealthController_updateUI"]

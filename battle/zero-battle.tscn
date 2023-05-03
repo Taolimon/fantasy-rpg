@@ -2,7 +2,7 @@
 
 [ext_resource path="res://battle/battle.gd" type="Script" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://enemies/enemy-battle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://enemies/enemy_types/slime/slime-battle.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/tileset.tres" type="MeshLibrary" id=4]
 
 [sub_resource type="Curve3D" id=3]
@@ -49,3 +49,4 @@ __meta__ = {
 environment = SubResource( 4 )
 
 [connection signal="battleStart" from="Player" to="." method="_on_Player_battleStart"]
+[connection signal="game_over" from="Player" to="." method="_on_Player_game_over"]

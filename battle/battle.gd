@@ -32,6 +32,9 @@ func _ready():
 	
 	
 func _on_Enemy_defeated():
+	print("BATTLE END")
+	print(str(_number_of_enemies))
+	print(str(_enemies))
 	_enemies.remove(_enemies.size()-1)
 	_number_of_enemies -= 1
 
@@ -47,3 +50,10 @@ func setWorldNumber(number):
 	
 func setBattleNumber(number):
 	battle_num = number
+
+
+func _on_Player_game_over():
+	_enemies.remove(_enemies.size()-1)
+	_number_of_enemies -= 1
+	emit_signal("level_change", self, "game_over", false, world_num)
+	pass # Replace with function body.

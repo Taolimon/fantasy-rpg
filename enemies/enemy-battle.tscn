@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://enemies/enemy-battle.gd" type="Script" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
@@ -13,8 +13,14 @@ size = Vector3( 2, 1, 2 )
 albedo_color = Color( 0.854902, 0.247059, 0.247059, 1 )
 
 [sub_resource type="CylinderShape" id=3]
-height = 0.9
-radius = 2.0
+height = 1.31348
+radius = 1.72602
+
+[sub_resource type="CylinderShape" id=4]
+radius = 2.31463
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 0.5, 0.7, 0.9 )
 
 [node name="Enemy" type="KinematicBody" groups=["battle_enemy"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
@@ -41,5 +47,24 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 [node name="EnemyBehaviour" type="Node" parent="."]
 script = ExtResource( 5 )
 
+[node name="AtkRange" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="AtkRange"]
+shape = SubResource( 4 )
+
+[node name="AtkPivot" type="Spatial" parent="."]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0 )
+
+[node name="LightAtkArea" type="Area" parent="AtkPivot"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -2 )
+
+[node name="LightHitbox" type="CollisionShape" parent="AtkPivot/LightAtkArea"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.19209e-07, 0, 0 )
+shape = SubResource( 5 )
+disabled = true
+
 [connection signal="half_health" from="HealthController" to="." method="_on_HealthController_half_health"]
 [connection signal="updateUI" from="HealthController" to="HealthBar3D" method="_on_HealthController_updateUI"]
+[connection signal="body_entered" from="AtkRange" to="." method="_on_AtkRange_body_entered"]
+[connection signal="body_entered" from="AtkPivot/LightAtkArea" to="." method="_on_LightAtkArea_body_entered"]
+[connection signal="body_exited" from="AtkPivot/LightAtkArea" to="." method="_on_LightAtkArea_body_exited"]

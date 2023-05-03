@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://player/Combo.gd"
 }, {
+"base": "Node",
+"class": "EnemyBehaviour",
+"language": "GDScript",
+"path": "res://enemies/EnemyBehaviour.gd"
+}, {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
@@ -84,6 +89,7 @@ _global_script_class_icons={
 "BattleAction": "",
 "Chest": "",
 "Combo": "",
+"EnemyBehaviour": "",
 "GitAPI": "",
 "HealthController": "",
 "Interactable": "",

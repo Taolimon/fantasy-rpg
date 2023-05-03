@@ -6,7 +6,9 @@ func _ready():
 	texture = $Viewport.get_texture()
 
 func update(value, max_value):
-	_bar.value = (value * 100)
+	var val = value/max_value
+	var max_val = max_value/max_value
+	_bar.value = (val * 100)
 	print(str(_bar.value))
 
 

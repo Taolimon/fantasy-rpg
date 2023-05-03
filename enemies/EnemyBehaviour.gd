@@ -1,5 +1,7 @@
 extends Node
 
+class_name EnemyBehaviour
+
 enum STATES {
 	NORMAL,
 	WARY,

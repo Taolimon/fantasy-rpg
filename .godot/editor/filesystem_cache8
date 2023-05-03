@@ -1,0 +1,115 @@
+2a60927148abd1d33b818b535e306557
+::res://::1682701138
+default_env.tres::Environment::4456869033707847201::1682701385::0::1::::<><>::
+icon.png::CompressedTexture2D::5107869374519786569::1677851364::1682700970::1::::<><>::
+README.md::TextFile::-1::1682367243::0::1::::<><>::
+::res://addons/::1682372684
+::res://addons/godot-git-plugin/::1682372684
+plugin.cfg::TextFile::-1::1682372684::0::1::::<><>::
+THIRDPARTY.md::TextFile::-1::1682372684::0::1::::<><>::
+::res://addons/godot-git-plugin/linux/::1682372684
+::res://addons/godot-git-plugin/osx/::1682372684
+::res://addons/godot-git-plugin/win64/::1682372684
+::res://assets/::1682701065
+Material_001.material::StandardMaterial3D::-1::1678312711::0::1::::<><>::
+tileset_asdssaf.png::CompressedTexture2D::2035110876493107677::1682700975::1682700975::1::::<><>::
+tileset_asdssaf_n.png::CompressedTexture2D::2841106883010202431::1682700975::1682700975::1::::<><>::
+tileset.glb::PackedScene::-1::1678312711::1682700975::1::::<><>::
+tileset.tres::MeshLibrary::7103804836984200581::1682701065::0::1::::<><>::res://assets/Material_001.material
+tileset.tscn::PackedScene::-1::1682700755::0::1::::<><>::res://assets/tileset.glb
+::res://battle/::1682636433
+battle.gd::GDScript::-1::1682700755::0::1::::<>Node<>::
+test-battle.tscn::PackedScene::-1::1682700755::0::1::::<><>::res://battle/battle.gd<>res://player/player.tscn<>res://enemies/enemy-battle.tscn
+zero-battle.tscn::PackedScene::-1::1682700755::0::1::::<><>::res://battle/battle.gd<>res://player/player.tscn<>res://enemies/enemy-battle.tscn<>res://assets/tileset.tres
+::res://enemies/::1682636433
+enemy-battle.gd::GDScript::-1::1682700755::0::1::::<>CharacterBody3D<>::
+enemy-battle.tscn::PackedScene::-1::1682700755::0::1::::<><>::res://enemies/enemy-battle.gd<>res://player/player.tscn<>res://entitystats/HealthController.gd<>res://ui/bars/health/HealthBar3D.tscn<>res://enemies/EnemyBehaviour.gd
+enemy-world.gd::GDScript::-1::1682700755::0::1::::enemy_world<>CharacterBody3D<>::
+enemy-world.tscn::PackedScene::-1::1682700755::0::1::::<><>::res://enemies/enemy-world.gd<>res://player/player.tscn
+EnemyBehaviour.gd::GDScript::-1::1682700755::0::1::::<>Node<>::
+::res://entitystats/::1682633388
+HealthController.gd::GDScript::-1::1682700755::0::1::::HealthController<>Node<>::
+HealthController.tscn::PackedScene::-1::1682700755::0::1::::<><>::res://entitystats/HealthController.gd
+StanceController.gd::GDScript::-1::1682700755::0::1::::StanceController<>Node<>::
+::res://items/::1680020142
+ItemData.gd::GDScript::-1::1682700755::0::1::::ItemData<>Node<>::
+::res://overworld/::1682701138
+LevelChanger.gd::GDScript::-1::1682700755::0::1::::LevelChanger<>Area3D<>::
+one-0.1-world.tscn::PackedScene::-1::1682700755::0::1::::<><>::res://overworld/overworld.gd<>res://player/player.tscn<>res://enemies/enemy-world.tscn<>res://assets/tileset.tres<>res://utility/LevelData.gd<>res://utility/LevelChanger.tscn
+one-0.2-world.tscn::PackedScene::-1::1682700755::0::1::::<><>::res://overworld/overworld.gd<>res://player/player.tscn<>res://enemies/enemy-world.tscn<>res://assets/tileset.tres<>res://utility/LevelData.gd<>res://utility/LevelChanger.tscn
+one-0.3-world.tscn::PackedScene::-1::1682700755::0::1::::<><>::res://overworld/overworld.gd<>res://player/player.tscn<>res://enemies/enemy-world.tscn<>res://assets/tileset.tres<>res://utility/LevelData.gd<>res://utility/LevelChanger.tscn
+overworld.gd::GDScript::-1::1682701386::0::1::::<>Node<>::
+test-world.tscn::PackedScene::-1::1682700755::0::1::::<><>::res://overworld/overworld.gd<>res://player/player.tscn<>res://enemies/enemy-world.tscn
+zero-0.1-world.tscn::PackedScene::-1::1682700755::0::1::::<><>::res://overworld/overworld.gd<>res://player/player.tscn<>res://enemies/enemy-world.tscn<>res://assets/tileset.tres<>res://utility/LevelData.gd<>res://utility/LevelChanger.tscn
+zero-0.2-world.tscn::PackedScene::-1::1682700755::0::1::::<><>::res://overworld/overworld.gd<>res://player/player.tscn<>res://enemies/enemy-world.tscn<>res://assets/tileset.tres<>res://utility/LevelData.gd<>res://utility/LevelChanger.tscn
+zero-0.3-world.tscn::PackedScene::-1::1682700755::0::1::::<><>::res://overworld/overworld.gd<>res://player/player.tscn<>res://enemies/enemy-world.tscn<>res://assets/tileset.tres<>res://utility/LevelData.gd<>res://utility/LevelChanger.tscn
+::res://overworld/interactable/::1680030166
+chest.gd::GDScript::-1::1682700755::0::1::::Chest<>Interactable<>::
+Chest.tscn::PackedScene::-1::1682700755::0::1::::<><>::res://overworld/interactable/chest.gd<>res://overworld/interactable/interactable.tscn
+interactable.gd::GDScript::-1::1682700755::0::1::::Interactable<>StaticBody3D<>::
+interactable.tscn::PackedScene::-1::1682700755::0::1::::<><>::res://overworld/interactable/interactable.gd
+InteractableItem.gd::GDScript::-1::1682700755::0::1::::<>Interactable<>::
+InteractableItem.tscn::PackedScene::-1::1682700755::0::1::::<><>::res://overworld/interactable/InteractableItem.gd<>res://overworld/interactable/interactable.tscn
+::res://player/::1682701139
+Attack.gd::GDScript::-1::1682700753::0::1::::Attack<>Node<>::
+BattleAction.gd::GDScript::-1::1682700753::0::1::::BattleAction<>Node<>::
+Combo.gd::GDScript::-1::1682700753::0::1::::Combo<>BattleAction<>::
+player.gd::GDScript::-1::1682701139::0::1::::Player<>CharacterBody3D<>::
+player.tscn::PackedScene::-1::1682700755::0::1::::<><>::res://player/player.gd<>res://player/ThirdPersonCamera.gd<>res://player/characters/v2/Material_003.material<>res://player/characters/v2/Material_001.material<>res://player/characters/v2/Material_004.material<>res://player/characters/v2/Material_002.material<>res://player/Combo.gd<>res://ui/interface/Interface.tscn
+PlayerStats.gd::GDScript::-1::1682700755::0::1::::PlayerStats<>Node<>::
+ThirdPersonCamera.gd::GDScript::-1::1682700755::0::1::::<>Camera3D<>::
+::res://player/characters/::1682700975
+Material_001.material::StandardMaterial3D::-1::1679529022::0::1::::<><>::
+Material_002.material::StandardMaterial3D::-1::1679529022::0::1::::<><>::
+Material_003.material::StandardMaterial3D::-1::1679529036::0::1::::<><>::
+Material_004.material::StandardMaterial3D::-1::1679529022::0::1::::<><>::
+vermillion-arm-2-wp-g1_skin.png::CompressedTexture2D::3514824402398009587::1682700971::1682700975::1::::<><>::
+vermillion-arm-2-wp-g1.glb::PackedScene::-1::1679529021::1682700973::1::::<><>::
+::res://player/characters/v2/::1682700976
+Material_001.material::StandardMaterial3D::-1::1679534228::0::1::::<><>::
+Material_002.material::StandardMaterial3D::-1::1679534228::0::1::::<><>::
+Material_003.material::StandardMaterial3D::-1::1679534228::0::1::::<><>::
+Material_004.material::StandardMaterial3D::-1::1679534228::0::1::::<><>::
+vermillion-arm-2-wp-g2_skin.png::CompressedTexture2D::680092432044807570::1682700973::1682700975::1::::<><>::
+vermillion-arm-2-wp-g2.glb::PackedScene::-1::1679534228::1682700975::1::::<><>::
+::res://ui/::1680119722
+::res://ui/bars/::1682700970
+Bar.tscn::PackedScene::-1::1682700752::0::1::::<><>::res://ui/interface/theme/font/default_font.tres<>res://ui/bars/health bar bg.png<>res://ui/bars/health bar.png<>res://ui/bars/hp.png<>res://ui/counter/layou-bg.png
+health bar bg.png::CompressedTexture2D::4714485872358861773::1680125819::1682700970::1::::<><>::
+health bar.png::CompressedTexture2D::7970319210885788066::1680120180::1682701402::1::::<><>::
+health.png::CompressedTexture2D::9027079466749358560::1680118825::1682700970::1::::<><>::
+hp.png::CompressedTexture2D::2700180925176264197::1680126411::1682700970::1::::<><>::
+SP.png::CompressedTexture2D::7267975200100440367::1680127123::1682700970::1::::<><>::
+::res://ui/bars/health/::1680179005
+EnemyHealthBar.tscn::PackedScene::-1::1682700753::0::1::::<><>::res://ui/bars/Bar.tscn
+HealthBar3D.gd::GDScript::-1::1682700753::0::1::::<>Sprite3D<>::
+HealthBar3D.tscn::PackedScene::-1::1682700753::0::1::::<><>::res://ui/bars/health/HealthBar3D.gd<>res://ui/bars/health bar.png<>res://ui/bars/health/EnemyHealthBar.tscn
+HealthBar.tscn::PackedScene::-1::1682700753::0::1::::<><>::res://ui/bars/Bar.tscn
+::res://ui/bars/special/::1682700970
+sp bar bg.png::CompressedTexture2D::4040940067494932728::1680127670::1682700970::1::::<><>::
+sp bar.png::CompressedTexture2D::1236195817686131658::1680127447::1682700970::1::::<><>::
+SpecialBar.tscn::PackedScene::-1::1682700753::0::1::::<><>::res://ui/bars/special/sp bar.png<>res://ui/bars/special/sp bar bg.png<>res://ui/bars/SP.png<>res://ui/bars/Bar.tscn
+::res://ui/battle/::1682700970
+hit.png::CompressedTexture2D::527555067561004976::1680120003::1682700970::1::::<><>::
+run cloud.png::CompressedTexture2D::1951797016999111967::1680120040::1682700970::1::::<><>::
+star effect.png::CompressedTexture2D::1324381127364975426::1680120090::1682700970::1::::<><>::
+Target-crosshair.png::CompressedTexture2D::6328744928541792048::1680011138::1682700970::1::::<><>::
+::res://ui/counter/::1682700970
+Counter.tscn::PackedScene::-1::1682700752::0::1::::<><>::res://ui/counter/layou-bg.png<>res://ui/counter/silver coin.png<>res://ui/interface/theme/font/default_font.tres
+layou-bg.png::CompressedTexture2D::6764298059865191583::1680120377::1682700970::1::::<><>::
+silver coin.png::CompressedTexture2D::536229546161407535::1680120060::1682700970::1::::<><>::
+SilverCounter.tscn::PackedScene::-1::1682700752::0::1::::<><>::res://ui/counter/Counter.tscn
+::res://ui/interface/::1682637774
+Interface.tscn::PackedScene::-1::1682700752::0::1::::<><>::res://ui/counter/SilverCounter.tscn<>res://ui/bars/special/SpecialBar.tscn<>res://ui/bars/health/HealthBar.tscn
+::res://ui/interface/theme/::1680121462
+default_theme.tres::Theme::-1::1682700752::0::1::::<><>::
+::res://ui/interface/theme/font/::1682701065
+Comfortaa-Bold.ttf::FontFile::1030620671451502528::1680121651::1682700970::1::::<><>::
+default_font.tres::Theme::4994148118709724390::1682701065::0::1::::<><>::uid://oxif3xx072mm
+::res://utility/::1682701065
+LevelChanger.tscn::PackedScene::-1::1682700752::0::1::::<><>::res://overworld/LevelChanger.gd
+LevelData.gd::GDScript::-1::1682700752::0::1::::LevelData<>Node<>::
+PlayerData.gd::GDScript::-1::1682700752::0::1::::<>Node<>::
+SceneSwitcher.gd::GDScript::-1::1682700752::0::1::::<>Node<>::
+SceneSwitcher.tscn::PackedScene::3526360069456100914::1682701065::0::1::::<><>::res://utility/SceneSwitcher.gd<>res://overworld/zero-0.1-world.tscn<>res://utility/WorldData.gd<>res://utility/LevelData.gd<>res://utility/PlayerData.gd
+WorldData.gd::GDScript::-1::1682700752::0::1::::<>Node<>::

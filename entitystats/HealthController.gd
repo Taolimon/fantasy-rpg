@@ -21,10 +21,7 @@ func receiveDamage(damage):
 	checkHealth()
 	
 func updateUI():
-	var val = health/max_health
-	var max_val = max_health/max_health
-	print("update: " + str(val))
-	emit_signal("updateUI", val, max_val)
+	emit_signal("updateUI", health, max_health)
 
 func checkHealth():
 	if (health <= 0):
@@ -36,4 +33,7 @@ func die():
 	if (_entity.is_in_group("battle_enemy")):
 		print("DEAD")	
 		_entity.emit_signal("defeated")
+		_entity.queue_free()
+	elif (_entity.is_in_group("player")):
+		_entity.emit_signal("game_over")
 		_entity.queue_free()

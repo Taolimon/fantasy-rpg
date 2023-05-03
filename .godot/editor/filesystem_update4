@@ -1,0 +1,11 @@
+res://default_env.tres
+res://utility/SceneSwitcher.tscn
+res://ui/interface/theme/font/default_font.tres
+res://assets/tileset.tres
+res://overworld/zero-0.1-world.tscn
+res://player/player.gd
+res://overworld/overworld.gd
+res://enemies/enemy-battle.tscn
+res://enemies/enemy-battle.gd
+res://player/ThirdPersonCamera.gd
+res://player/player.tscn

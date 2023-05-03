@@ -10,20 +10,21 @@ export var mode = "overworld"
 
 var sprint_speed = 36
 var attack = 0
-var health = 10
 var velocity = Vector3.ZERO
 
+onready var health = get_node("HealthController")
 onready var _camera_pivot = $CameraPivot
 onready var armature = $rig
 onready var anim_tree = $AnimationTree
+
+onready var atkpivot = $AtkPivot
+onready var lightatk = $AtkPivot/LightAtkArea
 
 const LERP_VAL = 0.15
 
 #signals
 signal battleStart(id)
-#signal light_hit
-#signal heavy_hit
-#signal special_hit
+signal game_over
 
 
 #Called when manipulating physics
@@ -105,7 +106,7 @@ func battleMovement(direction, delta):
 		anim_tree.set("parameters/is-attacking/current", 1)
 		var state_machine = anim_tree.get("parameters/StateMachine/playback")
 		state_machine.start("light-attack")
-		$LightAtkArea/LightHitbox.disabled = false
+		$AtkPivot/LightAtkArea/LightHitbox.disabled = false
 		
 	if Input.is_action_just_pressed("heavy_attack"):
 		pass
@@ -116,6 +117,7 @@ func battleMovement(direction, delta):
 		direction = direction.normalized()
 #		$Base.look_at(translation + direction, Vector3.UP)
 		armature.rotation.y = atan2(velocity.x, velocity.z)
+		atkpivot.rotation.y = atan2(velocity.x, velocity.z)
 		
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		velocity.y += jump_height
@@ -130,14 +132,17 @@ func battleMovement(direction, delta):
 
 func startBattle(id):
 	emit_signal("battleStart", id)
+	
+func receiveDamage(damage):
+	health.receiveDamage(damage)
 
 func _on_LightAtkArea_body_entered(body):
 	var enemy = body
 	var damage = attack + (1 * 2)
-	print("sent: " + str(damage))
+#	print("sent: " + str(damage))
 	enemy.receiveDamage(damage)
 	enemy.knockback(self.transform.origin)
-	$LightAtkArea/LightHitbox.disabled = true
+	$AtkPivot/LightAtkArea/LightHitbox.disabled = true
 
 func _on_BattleInitiator_body_entered(body):
 	if (body.is_in_group("enemy") && mode != "battle"):

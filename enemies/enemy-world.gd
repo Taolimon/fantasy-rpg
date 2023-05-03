@@ -14,19 +14,26 @@ onready var player_position = null
 onready var current_area = null
 onready var spawn_location = null
 
+onready var armature = $rig/Armature
+onready var anim_tree = $rig/AnimationTree
+onready var playback = anim_tree.get("parameters/playback")
+
 func _ready():
+	playback.start("idle-loop")
+	anim_tree.active = true
 	current_area = get_parent()
 	pass
 
 # warning-ignore:return_value_discarded
 func _physics_process(_delta):
-	
+
 	#try to follow the player
 	if (player != null):	
 		player_position = player.transform.origin
 		var direction = (player_position - transform.origin).normalized()
 		look_at(player_position, Vector3.UP)
 		move_and_slide(direction * max_speed, Vector3.UP)
+		playback.travel("walk-loop")
 
 func setEnemyPos(position):
 	spawn_location = position
@@ -40,6 +47,7 @@ func _on_PlayerDetector_body_entered(body):
 func _on_PlayerDetector_body_exited(body):
 	if (body == player):
 		player = null
+		playback.travel("idle-loop")
 
 func setEnemyID(id):
 	enemy_id = id
