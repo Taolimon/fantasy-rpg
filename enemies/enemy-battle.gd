@@ -60,6 +60,7 @@ func _physics_process(delta):
 		behaviour.STATES.ADVANCING:
 			speed = max_speed
 		behaviour.STATES.ATTACKING:
+			speed = min_speed
 			if (behaviour.state != behaviour.STATES.ATTACKING):
 				start_time = 0
 				resetTimer()

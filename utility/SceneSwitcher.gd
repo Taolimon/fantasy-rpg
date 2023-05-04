@@ -2,8 +2,8 @@ extends Node
 
 # Level Switcher inpsired by jmbiv and godot docs
 # https://www.youtube.com/watch?v=XHbrKdsZrxY
-onready var _current_level = $Overworld
-onready var _current_level_data = $Overworld/LevelData
+onready var _current_level = $TitleScreen
+onready var _current_level_data = _current_level.get_node("LevelData")
 var save_state = false
 var previous_level = null
 var previous_dest = null
@@ -62,7 +62,10 @@ func _deferred_goto_level(next_level):
 	add_child(next_level)
 	_current_level.queue_free()
 	_current_level = next_level
+	_current_level_data = _current_level.get_node("LevelData")
+	print("CURRENT LEVEL DATA" + str(_current_level_data))
 	_current_level.connect("level_change", self, "processNextLevel")
+	_current_level.connect("saveState", self, "setLevelSaveState")
 	
 func setLevelSaveState(level_save):
 	save_state = level_save

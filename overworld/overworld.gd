@@ -24,6 +24,7 @@ signal sendLevelData(leveldata)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if (saved_level):
+		print(" ----------- LOADING... -------------")
 		loadData()
 	else:
 		spawnRandomEnemies()
