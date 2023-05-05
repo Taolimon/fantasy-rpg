@@ -132,3 +132,7 @@ func _on_Player_levelchanger_change(id):
 
 func _on_Player_floorchanger_change(floor_name, id):
 	emit_signal("level_change", self, floor_name, false, id)
+
+
+func _on_Player_win():
+	emit_signal("level_change", self, "win", false, num)

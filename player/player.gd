@@ -28,6 +28,7 @@ signal battle_info(enemy_name, id)
 signal game_over
 signal levelchanger_change(id)
 signal floorchanger_change(floor_name, id)
+signal win
 
 #Called when manipulating physics
 func _physics_process(delta):
@@ -162,3 +163,5 @@ func _on_BattleInitiator_area_entered(area):
 		emit_signal("levelchanger_change", area.getNextLevelID())
 	elif (area.is_in_group("floorchanger")):
 		emit_signal("floorchanger_change", area.getNextFloorName(), area.getNextLevelID())
+	elif (area.is_in_group("winchanger")):
+		emit_signal("win")

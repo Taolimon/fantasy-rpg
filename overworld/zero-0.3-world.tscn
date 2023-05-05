@@ -61,7 +61,20 @@ next_level_id = 0.1
 
 [node name="FloorChanger" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 66.8334, 0, -31.3397 )
+next_level_id = 0.1
 
+[node name="slime-world" parent="." instance=ExtResource( 3 )]
+transform = Transform( -0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -2, 1, -14 )
+
+[node name="slime-world2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 1, -32 )
+
+[node name="slime-world3" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 1, 7 )
+
+[connection signal="updateEnemy" from="." to="slime-world" method="_on_Overworld_updateEnemy"]
+[connection signal="updateEnemy" from="." to="slime-world2" method="_on_Overworld_updateEnemy"]
+[connection signal="updateEnemy" from="." to="slime-world3" method="_on_Overworld_updateEnemy"]
 [connection signal="battleStart" from="Player" to="." method="_on_Player_battleStart"]
 [connection signal="floorchanger_change" from="Player" to="." method="_on_Player_floorchanger_change"]
 [connection signal="levelchanger_change" from="Player" to="." method="_on_Player_levelchanger_change"]

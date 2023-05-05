@@ -61,6 +61,18 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 43, 0, -39 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 23 )
 next_level_id = 0.1
 
+[node name="slime-world" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 1, -22 )
+
+[node name="slime-world2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 1, 21 )
+
+[node name="slime-world3" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 82, 1, -4 )
+
+[connection signal="updateEnemy" from="." to="slime-world" method="_on_Overworld_updateEnemy"]
+[connection signal="updateEnemy" from="." to="slime-world2" method="_on_Overworld_updateEnemy"]
+[connection signal="updateEnemy" from="." to="slime-world3" method="_on_Overworld_updateEnemy"]
 [connection signal="battleStart" from="Player" to="." method="_on_Player_battleStart"]
 [connection signal="levelchanger_change" from="Player" to="." method="_on_Player_levelchanger_change"]
 [connection signal="levelchanger_change" from="LevelChanger" to="." method="_on_LevelChanger_levelchanger_change"]

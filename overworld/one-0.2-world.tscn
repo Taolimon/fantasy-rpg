@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://overworld/overworld.gd" type="Script" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/tileset.tres" type="MeshLibrary" id=4]
 [ext_resource path="res://utility/LevelData.gd" type="Script" id=5]
 [ext_resource path="res://utility/LevelChanger.tscn" type="PackedScene" id=6]
+[ext_resource path="res://enemies/enemy_types/knight/knight-world.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Curve3D" id=3]
 _data = {
@@ -19,7 +20,7 @@ ambient_light_color = Color( 0.368627, 0.392157, 0.454902, 1 )
 [node name="Overworld" type="Node"]
 script = ExtResource( 1 )
 enemy_scene = ExtResource( 3 )
-level_name = "zero"
+level_name = "one"
 num = 0.2
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
@@ -61,5 +62,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20218, 2.02987, -107.909 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 23 )
 next_level_id = 0.1
 
+[node name="knight-world" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -21 )
+
+[node name="knight-world2" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -72 )
+
+[connection signal="updateEnemy" from="." to="knight-world" method="_on_Overworld_updateEnemy"]
+[connection signal="updateEnemy" from="." to="knight-world2" method="_on_Overworld_updateEnemy"]
 [connection signal="battleStart" from="Player" to="." method="_on_Player_battleStart"]
-[connection signal="levelchanger_change" from="LevelChanger" to="." method="_on_LevelChanger_levelchanger_change"]
+[connection signal="levelchanger_change" from="Player" to="." method="_on_Player_levelchanger_change"]

@@ -40,12 +40,12 @@ func _ready():
 	playback.start("idle-loop")
 	anim_tree.active = true
 	current_area = get_parent()
-	pass
 
 # warning-ignore:return_value_discarded
 func _physics_process(_delta):
 	if (updating):
 		self.queue_free()
+		updating = false
 
 	#try to follow the player
 	if (player != null):	

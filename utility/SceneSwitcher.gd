@@ -31,6 +31,10 @@ func processNextLevel(current_level, dest, battle, world_num):
 			return
 		"restart":
 			next_level = previous_level
+		"win":
+			next_level = load("res://ui/win.tscn").instance()
+			goto_level(next_level)
+			return
 			
 #	print("DEFAULT LEVEL CHANGE")
 	
