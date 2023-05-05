@@ -43,7 +43,8 @@ func _ready():
 
 # warning-ignore:return_value_discarded
 func _physics_process(_delta):
-	if (updating):
+	var enemy_dic = parent_level.getEnemyDict()
+	if (updating && enemy_dic[enemy_id] == 0):
 		self.queue_free()
 		updating = false
 

@@ -24,6 +24,7 @@ func saveState(dest : LevelData):
 	dest.setPlayerPos(self.getPlayerPos())
 	dest.setEnemyList(self.getEnemyList())
 	dest.setEnemyIDList(self.getEnemyIDList())
+	dest.setEnemyDict(self.getEnemyDict())
 	dest.setInteractableList(self.getInteractableList())
 	dest.setBattleID(self.getBattleID())
 	
@@ -31,6 +32,7 @@ func loadState(data):
 	self.setPlayerPos(data.getPlayerPos())
 	self.setEnemyList(data.getEnemyList())
 	self.setEnemyIDList(data.getEnemyIDList())
+	self.setEnemyDict(data.getEnemyDict())
 	self.setInteractableList(data.getInteractableList())
 	self.setBattleID(data.getBattleID())
 	

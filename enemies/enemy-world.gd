@@ -36,6 +36,7 @@ func _ready():
 	parent_level.setEnemyIDList(enemy_id_list)
 	parent_level.setEnemyDict(enemy_dic)
 	print("EIDL: " + str(parent_level.getEnemyIDList()))
+	print("EIDD: " + str(parent_level.getEnemyDict()))
 	
 	playback.start("idle-loop")
 	anim_tree.active = true
@@ -43,7 +44,8 @@ func _ready():
 
 # warning-ignore:return_value_discarded
 func _physics_process(_delta):
-	if (updating):
+	var enemy_dic = parent_level.getEnemyDict()
+	if (updating && enemy_dic[enemy_id] == 0):
 		self.queue_free()
 		updating = false
 
