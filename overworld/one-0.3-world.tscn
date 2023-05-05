@@ -66,15 +66,19 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -109 )
 
 [node name="knight-world" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -21 )
+enemy_id = 1.31
 
 [node name="knight-world2" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.1801, -72 )
+enemy_id = 1.32
 
 [node name="slime-world" parent="." instance=ExtResource( 9 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -26.5277, 1, -62 )
+enemy_id = 1.33
 
 [node name="slime-world2" parent="." instance=ExtResource( 9 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 30.4723, 1.42083, -86 )
+enemy_id = 1.34
 
 [connection signal="updateEnemy" from="." to="knight-world" method="_on_Overworld_updateEnemy"]
 [connection signal="updateEnemy" from="." to="knight-world2" method="_on_Overworld_updateEnemy"]

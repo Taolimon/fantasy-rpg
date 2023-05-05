@@ -64,9 +64,11 @@ next_level_id = 0.1
 
 [node name="knight-world" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -21 )
+enemy_id = 1.21
 
 [node name="knight-world2" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -72 )
+enemy_id = 1.22
 
 [connection signal="updateEnemy" from="." to="knight-world" method="_on_Overworld_updateEnemy"]
 [connection signal="updateEnemy" from="." to="knight-world2" method="_on_Overworld_updateEnemy"]

@@ -43,21 +43,22 @@ valign = 1
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/Rows"]
 margin_top = 109.0
 margin_right = 524.0
-margin_bottom = 249.0
+margin_bottom = 189.0
 
 [node name="Rows" type="VBoxContainer" parent="PanelContainer/MarginContainer/Rows/CenterContainer"]
-margin_left = 226.0
-margin_right = 298.0
-margin_bottom = 140.0
+margin_left = 237.0
+margin_right = 287.0
+margin_bottom = 80.0
 custom_constants/separation = 40
 
 [node name="StartButton" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer/Rows"]
-margin_right = 72.0
+margin_right = 50.0
 margin_bottom = 20.0
 theme = ExtResource( 2 )
 text = "START"
 
 [node name="SettingsButton" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer/Rows"]
+visible = false
 margin_top = 60.0
 margin_right = 72.0
 margin_bottom = 80.0
@@ -65,9 +66,9 @@ theme = ExtResource( 2 )
 text = "SETTINGS"
 
 [node name="QuitButton" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer/Rows"]
-margin_top = 120.0
-margin_right = 72.0
-margin_bottom = 140.0
+margin_top = 60.0
+margin_right = 50.0
+margin_bottom = 80.0
 theme = ExtResource( 2 )
 text = "QUIT"
 

@@ -65,12 +65,15 @@ next_level_id = 0.1
 
 [node name="slime-world" parent="." instance=ExtResource( 3 )]
 transform = Transform( -0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -2, 1, -14 )
+enemy_id = 0.31
 
 [node name="slime-world2" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 1, -32 )
+enemy_id = 0.32
 
 [node name="slime-world3" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 1, 7 )
+enemy_id = 0.33
 
 [connection signal="updateEnemy" from="." to="slime-world" method="_on_Overworld_updateEnemy"]
 [connection signal="updateEnemy" from="." to="slime-world2" method="_on_Overworld_updateEnemy"]
