@@ -12,6 +12,7 @@ onready var player = null
 onready var player_position = null
 onready var current_area = null
 onready var spawn_location = null
+onready var level_data = get_parent().get_node("LevelData")
 
 onready var armature = $"guard-v0/rig/Skeleton/Cube001"
 onready var spear = $"guard-v0/Armature"
@@ -19,6 +20,13 @@ onready var anim_tree = $"guard-v0/AnimationTree"
 onready var playback = anim_tree.get("parameters/playback")
 
 func _ready():
+	var enemy_list = level_data.getEnemyList()
+	var enemy_id_list = level_data.getEnemyIDList()
+	enemy_list.append(self)
+	enemy_id_list.append(enemy_id)
+	level_data.setEnemyList(enemy_list)
+	level_data.setEnemyIDList(enemy_id_list)
+	
 	playback.start("guard")
 	anim_tree.active = true
 	current_area = get_parent()
@@ -54,3 +62,6 @@ func setEnemyID(id):
 
 func getEnemyID():
 	return enemy_id
+	
+func getEnemyName():
+	return enemy_name

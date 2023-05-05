@@ -14,12 +14,29 @@ onready var player = null
 onready var player_position = null
 onready var current_area = null
 onready var spawn_location = null
+onready var level_data = get_parent().get_node("LevelData")
+onready var parent_level = get_parent()
 
 onready var armature = $rig/Armature
 onready var anim_tree = $rig/AnimationTree
 onready var playback = anim_tree.get("parameters/playback")
 
+var updating = false
+
 func _ready():
+	var enemy_list = parent_level.getEnemyList()
+	var enemy_id_list = parent_level.getEnemyIDList()
+	var enemy_dic = parent_level.getEnemyDict()
+	
+	enemy_list.append(self)
+	enemy_id_list.append(enemy_id)
+	enemy_dic[enemy_id] = 1
+	print("ADDED" + str( enemy_id_list))
+	parent_level.setEnemyList(enemy_list)
+	parent_level.setEnemyIDList(enemy_id_list)
+	parent_level.setEnemyDict(enemy_dic)
+	print("EIDL: " + str(parent_level.getEnemyIDList()))
+	
 	playback.start("idle-loop")
 	anim_tree.active = true
 	current_area = get_parent()
@@ -27,6 +44,8 @@ func _ready():
 
 # warning-ignore:return_value_discarded
 func _physics_process(_delta):
+	if (updating):
+		self.queue_free()
 
 	#try to follow the player
 	if (player != null):	
@@ -58,3 +77,6 @@ func getEnemyID():
 
 func getEnemyName():
 	return enemy_name
+
+func _on_Overworld_updateEnemy(value):
+	updating = true

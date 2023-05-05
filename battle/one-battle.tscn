@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://battle/battle.gd" type="Script" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://enemies/enemy_types/slime/slime-battle.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/tileset.tres" type="MeshLibrary" id=4]
 [ext_resource path="res://enemies/enemy_types/knight/knight-battle.tscn" type="PackedScene" id=5]
 
@@ -16,6 +17,7 @@ ambient_light_color = Color( 0.517647, 0.333333, 0.466667, 1 )
 
 [node name="Battle" type="Node"]
 script = ExtResource( 1 )
+slime_enemy_scene = ExtResource( 3 )
 knight_enemy_scene = ExtResource( 5 )
 level_name = "zero"
 

@@ -8,10 +8,10 @@ export var _number_of_enemies = 1
 
 onready var world = get_parent().get_node("WorldData")
 onready var meta_enemy_data = world.getLevelData()
+onready var current_enemy_scene = slime_enemy_scene
 
-var current_enemy_scene = null
 var world_num = 0.0
-var battle_num = 0.0
+onready var battle_num = meta_enemy_data.getBattleID()
 
 #signals
 signal level_change(source_level, dest_level, mode)
@@ -22,9 +22,13 @@ signal battle_entered
 
 func _ready():
 	emit_signal("battle_entered")
-	getEnemy()
+	var e_type = getEnemy()
+	var enemy = null
 	
-	var enemy = current_enemy_scene.instance()
+	if (e_type == "slime"):
+		enemy = slime_enemy_scene.instance()
+	else:
+		enemy = knight_enemy_scene.instance()
 	var enemy_spawn_location = get_node("SpawnPath/SpawnLocation")
 	enemy_spawn_location.unit_offset = randf()
 	
@@ -45,6 +49,8 @@ func _on_Enemy_defeated():
 	_number_of_enemies -= 1
 
 	if (_number_of_enemies == 0 && _enemies.size() == 0):
+		#Mark the enemy as defeated in the parallel array
+		meta_enemy_data.markIDInEnemyList(battle_num)
 		emit_signal("battle_end")
 		endBattle()
 
@@ -59,17 +65,25 @@ func setBattleNumber(number):
 
 func getEnemy():
 	var list_of_enemies = meta_enemy_data.getEnemyList()
+	var enemy_ids = meta_enemy_data.getEnemyIDList()
+	var enemy_dic = meta_enemy_data.getEnemyDict()
 	var enemy_type = ""
+	print("IDS: " + str(meta_enemy_data.getEnemyIDList()))
+	print("LIST: " + str(meta_enemy_data.getEnemyList()))
+	print("BNIDS: " + str(battle_num))
+	for i in range (0, len(list_of_enemies)):
+		if (enemy_ids[i] == battle_num):
+			enemy_type = list_of_enemies[i].getEnemyName()
 	
-	for i in list_of_enemies:
-		if (i.getEnemyID() == battle_num):
-			enemy_type = i.getEnemyName()
-	
-	for i in list_of_enemies:
-		if (enemy_type == "slime"):
-			current_enemy_scene = slime_enemy_scene
-		else:
-			current_enemy_scene = knight_enemy_scene
+	print("TYPE ------" + enemy_type)		
+			
+	return enemy_type		
+#	if (enemy_type == "slime"):
+#		var scene = slime_enemy_scene
+#		current_enemy_scene = slime_enemy_scene
+#		print("CS: " + str(scene))
+#	else:
+#		current_enemy_scene = knight_enemy_scene
 
 func _on_Player_game_over():
 	_enemies.remove(_enemies.size()-1)
