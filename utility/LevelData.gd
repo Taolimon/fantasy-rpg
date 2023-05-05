@@ -53,3 +53,12 @@ func getInteractableList():
 
 func getBattleID():
 	return battle_id
+	
+func addEnemyToList(enemy):
+	enemy_list.add(enemy)
+	
+func searchEnemyList(id):
+	for i in enemy_list:
+		if i.get
+	
+func removeEnemyFromList(id):

@@ -4,6 +4,7 @@
 [ext_resource path="res://enemies/enemy_types/slime/slime-v1.tscn" type="PackedScene" id=2]
 
 [node name="slime-world" instance=ExtResource( 1 )]
+enemy_name = "slime"
 
 [node name="Base" parent="." index="0"]
 visible = false

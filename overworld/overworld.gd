@@ -10,6 +10,7 @@ onready var world = get_parent().get_node("WorldData")
 ##member variables
 #general
 var saved_level = false
+var enemy_list = []
 var interactable_list = []
 var rng = RandomNumberGenerator.new()
 #specific
@@ -85,5 +86,8 @@ func processData():
 		$Player.transform.origin = data.getPlayerPos()
 	interactable_list = data.getInteractableList()
 
-func _on_LevelChanger_levelchanger_change(id):
+func _on_Player_levelchanger_change(id):
 	emit_signal("level_change", self, level_name, false, id)
+
+func _on_Player_floorchanger_change(floor_name, id):
+	emit_signal("level_change", self, floor_name, false, id)

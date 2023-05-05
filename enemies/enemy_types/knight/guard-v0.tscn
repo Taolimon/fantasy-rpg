@@ -1,0 +1,92 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://enemies/enemy_types/knight/guard-v0.glb" type="PackedScene" id=1]
+
+[sub_resource type="AnimationNodeAnimation" id=33]
+animation = "attack"
+
+[sub_resource type="AnimationNodeAnimation" id=34]
+animation = "attack2"
+
+[sub_resource type="AnimationNodeAnimation" id=36]
+animation = "downed001"
+
+[sub_resource type="AnimationNodeAnimation" id=37]
+animation = "downed2"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "guard"
+
+[sub_resource type="AnimationNodeAnimation" id=43]
+animation = "guard2"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "walk-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "wary-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=38]
+animation = "wary-loop2"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=35]
+switch_mode = 1
+auto_advance = true
+xfade_time = 2.89
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=39]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=40]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+switch_mode = 1
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=42]
+switch_mode = 1
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=44]
+switch_mode = 1
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=31]
+states/attack/node = SubResource( 33 )
+states/attack/position = Vector2( 194, 190 )
+states/attack2/node = SubResource( 34 )
+states/attack2/position = Vector2( 400, 190 )
+states/downed001/node = SubResource( 36 )
+states/downed001/position = Vector2( 427, 28 )
+states/downed2/node = SubResource( 37 )
+states/downed2/position = Vector2( 624, 23 )
+states/guard/node = SubResource( 16 )
+states/guard/position = Vector2( 609, 189 )
+states/guard2/node = SubResource( 43 )
+states/guard2/position = Vector2( 781, 199 )
+states/walk-loop/node = SubResource( 18 )
+states/walk-loop/position = Vector2( 468, 108 )
+states/wary-loop/node = SubResource( 19 )
+states/wary-loop/position = Vector2( 185, 135 )
+states/wary-loop2/node = SubResource( 38 )
+states/wary-loop2/position = Vector2( 136, 35 )
+transitions = [ "walk-loop", "wary-loop", SubResource( 20 ), "wary-loop", "walk-loop", SubResource( 21 ), "walk-loop", "guard", SubResource( 26 ), "guard", "walk-loop", SubResource( 27 ), "attack", "attack2", SubResource( 35 ), "walk-loop", "attack", SubResource( 39 ), "walk-loop", "downed001", SubResource( 40 ), "downed001", "downed2", SubResource( 41 ), "wary-loop", "wary-loop2", SubResource( 42 ), "guard", "guard2", SubResource( 44 ) ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=32]
+
+[node name="guard-v0" instance=ExtResource( 1 )]
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0 )
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="3"]
+tree_root = SubResource( 31 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+process_mode = 0
+parameters/playback = SubResource( 32 )

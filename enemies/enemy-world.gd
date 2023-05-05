@@ -4,6 +4,7 @@ class_name enemy_world
 
 export (PackedScene) var player_scene
 
+export var enemy_name = "base"
 export var min_speed = 7
 export var max_speed = 10
 export var alerted = false
@@ -54,3 +55,6 @@ func setEnemyID(id):
 
 func getEnemyID():
 	return enemy_id
+
+func getEnemyName():
+	return enemy_name

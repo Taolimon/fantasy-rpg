@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://enemies/enemy_types/knight/guard-v0.tscn" type="PackedScene" id=1]
+[ext_resource path="res://enemies/enemy-world.tscn" type="PackedScene" id=2]
+[ext_resource path="res://enemies/enemy_types/knight/knight-world.gd" type="Script" id=3]
+
+[node name="knight-world" instance=ExtResource( 2 )]
+script = ExtResource( 3 )
+player_scene = null
+enemy_name = "knight"
+
+[node name="Base" parent="." index="0"]
+visible = false
+
+[node name="guard-v0" parent="." index="3" instance=ExtResource( 1 )]
+transform = Transform( -0.4, 0, -3.49691e-08, 0, 0.4, 0, 3.49691e-08, 0, -0.4, 0, -1, 0 )

@@ -2,6 +2,7 @@ extends KinematicBody
 
 export (PackedScene) var player_scene
 
+export var enemy_name = "base"
 export var attack = 0
 export var min_speed = 7
 export var max_speed = 14

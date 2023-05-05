@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://overworld/overworld.gd" type="Script" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://enemies/enemy-world.tscn" type="PackedScene" id=3]
+[ext_resource path="res://enemies/enemy_types/slime/slime-world.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/tileset.tres" type="MeshLibrary" id=4]
 [ext_resource path="res://utility/LevelData.gd" type="Script" id=5]
 [ext_resource path="res://utility/LevelChanger.tscn" type="PackedScene" id=6]
+[ext_resource path="res://utility/FloorChanger.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Curve3D" id=3]
 _data = {
@@ -54,12 +55,13 @@ environment = SubResource( 4 )
 [node name="LevelData" type="Node" parent="."]
 script = ExtResource( 5 )
 
-[node name="LevelChanger" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 43, 0, -39 )
-
 [node name="LevelChanger2" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 23 )
 next_level_id = 0.1
 
+[node name="FloorChanger" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 66.8334, 0, -31.3397 )
+
 [connection signal="battleStart" from="Player" to="." method="_on_Player_battleStart"]
-[connection signal="levelchanger_change" from="LevelChanger" to="." method="_on_LevelChanger_levelchanger_change"]
+[connection signal="floorchanger_change" from="Player" to="." method="_on_Player_floorchanger_change"]
+[connection signal="levelchanger_change" from="Player" to="." method="_on_Player_levelchanger_change"]

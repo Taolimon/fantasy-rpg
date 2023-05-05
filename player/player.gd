@@ -24,8 +24,10 @@ const LERP_VAL = 0.15
 
 #signals
 signal battleStart(id)
+signal battle_info(enemy_name, id)
 signal game_over
-
+signal levelchanger_change(id)
+signal floorchanger_change(floor_name, id)
 
 #Called when manipulating physics
 func _physics_process(delta):
@@ -154,3 +156,9 @@ func _on_BattleInitiator_body_entered(body):
 
 func _on_Player_battleStart(_id):
 	mode = "battle"
+
+func _on_BattleInitiator_area_entered(area):
+	if (area.is_in_group("levelchanger")):
+		emit_signal("levelchanger_change", area.getNextLevelID())
+	elif (area.is_in_group("floorchanger")):
+		emit_signal("floorchanger_change", area.getNextFloorName(), area.getNextLevelID())

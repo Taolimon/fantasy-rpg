@@ -58,4 +58,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -43 )
 next_level_id = 0.2
 
 [connection signal="battleStart" from="Player" to="." method="_on_Player_battleStart"]
-[connection signal="levelchanger_change" from="LevelChanger" to="." method="_on_LevelChanger_levelchanger_change"]
+[connection signal="floorchanger_change" from="Player" to="." method="_on_Player_floorchanger_change"]
+[connection signal="levelchanger_change" from="Player" to="." method="_on_Player_levelchanger_change"]

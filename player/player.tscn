@@ -153,7 +153,7 @@ nodes/run-time/node = SubResource( 54 )
 nodes/run-time/position = Vector2( 420, 220 )
 nodes/world-movement/node = SubResource( 43 )
 nodes/world-movement/position = Vector2( 580, 80 )
-node_connections = [ "mode", 0, "world-movement", "mode", 1, "is-attacking", "output", 0, "mode", "is-attacking", 0, "battle-run", "is-attacking", 1, "StateMachine", "world-movement", 0, "BlendSpace1D", "world-movement", 1, "run-time", "run-time", 0, "run" ]
+node_connections = [ "is-attacking", 0, "battle-run", "is-attacking", 1, "StateMachine", "run-time", 0, "run", "world-movement", 0, "BlendSpace1D", "world-movement", 1, "run-time", "mode", 0, "world-movement", "mode", 1, "is-attacking", "output", 0, "mode" ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=55]
 
@@ -13738,5 +13738,6 @@ script = ExtResource( 9 )
 
 [connection signal="battleStart" from="." to="." method="_on_Player_battleStart"]
 [connection signal="body_entered" from="AtkPivot/LightAtkArea" to="." method="_on_LightAtkArea_body_entered"]
+[connection signal="area_entered" from="BattleInitiator" to="." method="_on_BattleInitiator_area_entered"]
 [connection signal="body_entered" from="BattleInitiator" to="." method="_on_BattleInitiator_body_entered"]
 [connection signal="updateUI" from="HealthController" to="Interface" method="_on_HealthController_updateUI"]

@@ -1,10 +1,15 @@
 extends Node
 
-export (PackedScene) var battle_enemy_scene
+export (PackedScene) var slime_enemy_scene
+export (PackedScene) var knight_enemy_scene
 export var level_name = "test"
 export var _enemies = []
 export var _number_of_enemies = 1
 
+onready var world = get_parent().get_node("WorldData")
+onready var meta_enemy_data = world.getLevelData()
+
+var current_enemy_scene = null
 var world_num = 0.0
 var battle_num = 0.0
 
@@ -17,8 +22,9 @@ signal battle_entered
 
 func _ready():
 	emit_signal("battle_entered")
+	getEnemy()
 	
-	var enemy = battle_enemy_scene.instance()
+	var enemy = current_enemy_scene.instance()
 	var enemy_spawn_location = get_node("SpawnPath/SpawnLocation")
 	enemy_spawn_location.unit_offset = randf()
 	
@@ -51,6 +57,19 @@ func setWorldNumber(number):
 func setBattleNumber(number):
 	battle_num = number
 
+func getEnemy():
+	var list_of_enemies = meta_enemy_data.getEnemyList()
+	var enemy_type = ""
+	
+	for i in list_of_enemies:
+		if (i.getEnemyID() == battle_num):
+			enemy_type = i.getEnemyName()
+	
+	for i in list_of_enemies:
+		if (enemy_type == "slime"):
+			current_enemy_scene = slime_enemy_scene
+		else:
+			current_enemy_scene = knight_enemy_scene
 
 func _on_Player_game_over():
 	_enemies.remove(_enemies.size()-1)
